@@ -3,67 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATS Resume Generator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Advanced ATS Resume Generator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .form-control {
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+        }
+        .btn {
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary, .btn-success {
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .resume-preview {
+            margin-top: 30px;
+        }
+        .resume-content {
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .resume-content:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        .chart-container {
+            margin-top: 40px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ATS Resume Generator</h1>
-        <form id="resumeForm">
-            <h2>Personal Information</h2>
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
-            <label for="linkedin">LinkedIn:</label>
-            <input type="url" id="linkedin" name="linkedin">
-            <label for="github">GitHub:</label>
-            <input type="url" id="github" name="github">
 
-            <h2>Education</h2>
-            <label for="school">School:</label>
-            <input type="text" id="school" name="school" required>
-            <label for="degree">Degree:</label>
-            <input type="text" id="degree" name="degree" required>
-            <label for="graduation">Graduation Year:</label>
-            <input type="text" id="graduation" name="graduation" required>
-
-            <h2>Experience</h2>
-            <label for="company">Company:</label>
-            <input type="text" id="company" name="company">
-            <label for="role">Role:</label>
-            <input type="text" id="role" name="role">
-            <label for="duration">Duration:</label>
-            <input type="text" id="duration" name="duration">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4"></textarea>
-
-            <h2>Projects</h2>
-            <label for="project1">Project 1:</label>
-            <input type="text" id="project1" name="project1">
-            <label for="project1desc">Project 1 Description:</label>
-            <textarea id="project1desc" name="project1desc" rows="4"></textarea>
-            <label for="project2">Project 2:</label>
-            <input type="text" id="project2" name="project2">
-            <label for="project2desc">Project 2 Description:</label>
-            <textarea id="project2desc" name="project2desc" rows="4"></textarea>
-
-            <h2>Skills</h2>
-            <label for="skills">Skills:</label>
-            <input type="text" id="skills" name="skills" placeholder="Separate with commas" required>
-
-            <button type="submit">Generate Resume</button>
-        </form>
-
-        <div id="resumeOutput" class="resume-output">
-            <!-- Generated resume will be displayed here -->
+<div class="container">
+    <h1>Advanced ATS Resume Generator</h1>
+    <form id="resumeForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="+1 (123) 456-7890">
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile</label>
+                    <input type="url" class="form-control" id="linkedin" placeholder="https://linkedin.com/in/johndoe">
+                </div>
+                <div class="form-group">
+                    <label for="website">Personal Website</label>
+                    <input type="url" class="form-control" id="website" placeholder="https://johndoe.com">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="summary">Summary</label>
+                    <textarea class="form-control" id="summary" rows="3" placeholder="A brief overview of your experience and skills" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <textarea class="form-control" id="skills" rows="3" placeholder="List your skills here" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Experience</label>
+                    <textarea class="form-control" id="experience" rows="4" placeholder="Your work experience details" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <textarea class="form-control" id="education" rows="3" placeholder="Your educational background" required></textarea>
+                </div>
+            </div>
         </div>
-        <button id="downloadPdf" style="display:none;">Download PDF</button>
+        <div class="form-group">
+            <label for="certifications">Certifications</label>
+            <textarea class="form-control" id="certifications" rows="2" placeholder="Your certifications and achievements"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="languages">Languages</label>
+            <textarea class="form-control" id="languages" rows="2" placeholder="Languages you speak"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="references">References</label>
+            <textarea class="form-control" id="references" rows="2" placeholder="References"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Resume</button>
+    </form>
+
+    <div id="resumePreview" class="resume-preview">
+        <h2>Resume Preview</h2>
+        <div id="resumeContent" class="resume-content"></div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="d-flex justify-content-between">
+        <button id="downloadCSV" class="btn btn-secondary">Download Tracking Data (CSV)</button>
+        <button id="downloadPDF" class="btn btn-success">Download Resume (PDF)</button>
+    </div>
+
+    <div class="chart-container">
+        <h4>User Interaction Analytics</h4>
+        <canvas id="interactionChart"></canvas>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const { jsPDF } = window.jspdf;
+    let trackingData = [];
+
+    function trackEvent(eventType, eventData) {
+        console.log(`Tracking Event: ${eventType}`, eventData);
+        trackingData.push({
+            timestamp: new Date().toLocaleString(),
+            eventType,
+            ...eventData
+        });
+        // Example of sending data to a mock analytics service
+        // fetch('https://mock-analytics-service.com/track', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ eventType, eventData })
+        // });
+    }
+
+    document.getElementById('resumeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const resumeData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            linkedin: document.getElementById('linkedin').value,
+            website: document.getElementById('website').value,
+            summary: document.getElementById('summary').value,
+            skills: document.getElementById('skills').value,
+            experience: document.getElementById('experience').value,
+            education: document.getElementById('education').value,
+            certifications: document.getElementById('certifications').value,
+            languages: document.getElementById('languages').value,
+            references: document.getElementById('references').value,
+        };
+
+        const resumeContent = `
+            <h3>${resumeData.name}</h3>
+            <p>Email: ${resumeData.email}</p>
+            <p>Phone: ${resumeData.phone}</p>
+            <p>LinkedIn: <a href="${resumeData.linkedin}" target="_blank">${resumeData.linkedin}</a></p>
+            <p>Website: <a href="${resumeData.website}" target="_blank">${resumeData.website}</a></p>
+            <h4>Summary</h4>
+            <p>${resumeData.summary}</p>
+            <h4>Skills</h4>
+            <p>${resumeData.skills}</p>
+            <h4>Experience</h4>
+            <p>${resumeData.experience}</p>
+            <h4>Education</h4>
+            <p>${resumeData.education}</p>
+            <h4>Certifications</h4>
+            <p>${resumeData.certifications}</p>
+            <h4>Languages</h4>
+            <p>${resumeData.languages}</p>
+            <h4>References</h4>
+            <p>${resumeData.references}</p>
+        `;
+
+        document.getElementById('resumeContent').innerHTML = resumeContent;
+        trackEvent('resume_generated', resumeData);
+    });
+
+    document.getElementById('downloadCSV').addEventListener('click', function() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Timestamp,Event Type,Name,Email,Phone,LinkedIn,Website\n";
+        trackingData.forEach((row) => {
+            csvContent += `${row.timestamp},${row.eventType},${row.name || ''},${row.email || ''},${row.phone || ''},${row.linkedin || ''},${row.website || ''}\n`;
+        });
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "tracking_data.csv");
+        document.body.appendChild(link);
+        link.click();
+    });
+
+    document.getElementById('downloadPDF').addEventListener('click', function() {
+        const doc = new jsPDF();
+        doc.text(document.getElementById('resumeContent').innerText, 10, 10);
+        doc.save('resume.pdf');
+        trackEvent('resume_downloaded', { format: 'PDF' });
+    });
+
+    const ctx = document.getElementById('interactionChart').getContext('2d');
+    const interactionChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Resume Generated', 'Resume Downloaded'],
+            datasets: [{
+                label: '# of Actions',
+                data: [0, 0],
+                backgroundColor: [
+                    'rgba(0, 123, 255, 0.2)',
+                    'rgba(40, 167, 69, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(0, 123, 255, 1)',
+                    'rgba(40, 167, 69, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function updateChart() {
+        const resumeGeneratedCount = trackingData.filter(event => event.eventType === 'resume_generated').length;
+        const resumeDownloadedCount = trackingData.filter(event => event.eventType === 'resume_downloaded').length;
+        interactionChart.data.datasets[0].data = [resumeGeneratedCount, resumeDownloadedCount];
+        interactionChart.update();
+    }
+
+    document.getElementById('resumeForm').addEventListener('submit', updateChart);
+    document.getElementById('downloadPDF').addEventListener('click', updateChart);
+</script>
+
 </body>
 </html>
